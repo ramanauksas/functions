@@ -359,6 +359,94 @@ def sum_two_numbers(a, b=5):
 sum_two_numbers(10,10)
 sum_two_numbers(10)
 
+# --- Sunkesni uzdaviniai ---
+
+print("\n--- 1 ---")
+def add_dashes(text):
+    print(f"---{text}---")
+add_dashes("labas")
+
+print("\n--- 2 ---")
+def generateRndStr(length):
+  symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ12345678901234567890"
+  text = ""
+  for i in range(length):
+    text += symbols[random.randint(0,len(symbols) -1)]
+  return text
+
+random_string = generateRndStr(10)
+i=0
+while i != len(random_string):
+    printout = random_string[i]
+    while True:
+        try:
+            is_number = int(random_string[i])
+            next_is_number = int(random_string[i+1])
+            i += 1
+            printout += random_string[i]
+        except:
+            break
+    try:
+        print(f"[{int(printout)}]")
+    except:
+        print(printout)
+    i += 1
+
+
+print("\n--- 3 ---")
+def count_divisors(num):
+    count_div = 0
+    for i in range(2, num):
+        if num%i==0:
+            count_div += 1
+    return count_div
+count_div = count_divisors(10)
+print(f"Is keliu skaiciu dalijasi skaicius {10}: {count_div}")
+count_div = count_divisors(20)
+print(f"Is keliu skaiciu dalijasi skaicius {20}: {count_div}")
+
+print("\n--- 4 ---")
+rand_nums = [random.randint(33, 78) for i in range(100)]
+rand_nums_with_divisor_counts = [(num, count_divisors(num)) for num in rand_nums]
+rand_nums_with_divisor_counts.sort(key= lambda x: -x[1])
+print(rand_nums_with_divisor_counts)
+print([num[0] for num in rand_nums_with_divisor_counts])
+
+
+print("\n--- 5 ---")
+rand_nums = [random.randint(333, 778) for i in range(100)]
+rand_nums_with_divisor_counts = [(num, count_divisors(num)) for num in rand_nums]
+primary_items = [item for item in rand_nums_with_divisor_counts if item[1]==0]
+primary_numbers = [item[0] for item in rand_nums_with_divisor_counts if item[1]==0]
+print(f"tuples of primary numbers (numer, number of divisors): {primary_items}")
+print(f"Primary numbers {primary_numbers}")
+
+print("\n--- 6 ---")
+length = random.randint(10, 20)
+depth = random.randint(10, 30)
+my_list = [0] * length
+
+def generate_random_list():
+    my_list = [random.randint(0,10) for i in range(length)]
+    return my_list
+
+def fill_list(my_list, d=0):
+    if d==depth:
+        my_list[-1] = 0
+        return my_list
+    my_list = generate_random_list()
+    d += 1
+    my_list[-1] = fill_list(generate_random_list(), d)
+    return my_list
+
+my_list = fill_list(my_list)
+print(my_list)
+
+print("\n--- 7 ---")
+
+
+
+
 
 
 
